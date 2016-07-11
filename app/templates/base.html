@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../static/stylesheet.css">
+
+<link rel="stylesheet" type="text/css" href="../static/animate.css">
+
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100|Roboto:100|Catamaran:100" rel="stylesheet">
+
+
+	<title>MfNY</title>
+
+
+</head>
+
+
+<body>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-1 text-center form">
+
+			<h1 class="animated fadeIn title">Budget Projector</h1>
+			<form name="data" onsubmit="return add()" method="POST" action="/projection">
+
+
+			<div class="input-group animated fadeInRight">
+			<span class="input-group-addon">$</span>
+			<input type="number" name="income" placeholder="What is your monthly income?" value="$"></input></div><br>
+
+
+			<div class="input-group animated fadeInLeft">
+			<span class="input-group-addon">$</span>
+			<input type="number" name="fixed" placeholder="Sum of fixed expenses: i.e Rent, Phone or Phone Bills..."></input></div><br>
+
+
+			<div class="input-group animated fadeInRight">
+			<span class="input-group-addon">$</span>
+			<input type="number" name="food" placeholder="Add monthly food expenses..."></input></div><br>
+
+
+			<div class="input-group animated fadeInLeft">
+			<span class="input-group-addon">$</span>
+			<input type="number" name="shop" placeholder="Add monthly shopping expenses, including clothing, home and luxury items..."></input></div><br>
+
+
+			<div class="input-group animated fadeInRight">
+			<span class="input-group-addon">$</span>
+			<input type="number" name="other" placeholder="Add other monthly miscellaneous expenses..."></input></div><br>
+
+
+			<div class="input-group animated fadeInLeft">
+			<span class="input-group-addon">$</span>
+			<input type="number" name="debt" placeholder="What is your entire debt amount?"></input></div><br>
+
+
+			<div class="input-group animated fadeInRight">
+			<span class="input-group-addon">$</span>
+			<input type="number" name="time" placeholder="How many month's would you wish to pay this off by?"></input></div><br>
+
+
+			<input id="submit" type="submit" class="animated bounceInDown submit" value="Get Projection!"></input>
+			</form>
+
+		</div>
+		<img class="animated fadeIn img" src="http://i.imgur.com/PMMS45j.png" height="500" width="500">
+	</div>
+</div>
+
+<script type="text/javascript">
+	function add(){
+
+		var income = Number(document.forms['data']['income'].value);
+		var fixed = Number(document.forms['data']['fixed'].value);
+		var food = Number(document.forms['data']['food'].value);
+		var shopping = Number(document.forms['data']['shop'].value);
+		var other = Number(document.forms['data']['other'].value);
+		var debt = Number(document.forms['data']['debt'].value);
+		var time = Number(document.forms['data']['time'].value);
+		if ((income == ""||null)||(fixed == ""||null)||(food == ""||null)||(shop == ""||null)||(other == ""||null)||(debt == ""||null)||(time == ""||null)){
+			alert('Please enter all fields.');
+			return false;
+		};
+		var total_monthly = fixed+food+shopping+other;
+		if(confirm('You reported your monthly expenses as amounting to $' + total_monthly + '.\n Is this correct? ') == false){
+			return false;
+		}
+			
+			};
+</script>
+
+</body>
+
+
+</html>
